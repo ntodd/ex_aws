@@ -79,4 +79,6 @@ defimpl ExAws.Operation, for: ExAws.Operation.JSON do
   defp parse({:ok, %{body: body}}, config) do
     {:ok, config[:json_codec].decode!(body)}
   end
+  
+  defp parse({:ok, %{headers: headers}}, _), do: {:ok, headers}
 end
